@@ -62,6 +62,23 @@ textarea {
     font-family:monospace;
 }
 
+.container button {
+    margin-top: 4px;
+    margin-left: 162px;
+    width: 158px;
+    height: 30px;
+    background: rgba(228, 215, 215, 0.774);
+    border: none;
+    border-radius: 5px;
+    color: black;
+    font-family:monospace;
+}
+
+.container button:hover {
+    background: honeydew;
+    cursor: pointer;
+}
+
 footer {
     padding-left: 10px;
     padding-right: 10px;
