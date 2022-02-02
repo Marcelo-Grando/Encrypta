@@ -22,40 +22,54 @@ function copiar(texto) {
     navigator.clipboard.writeText(text);
 }
 
-function mostrarContenido(parametro) {
-    
-        const container = document.querySelector('.container');
-        let caja = document.createElement('div');
-        caja.innerHTML = parametro;
-        let btn = document.createElement('button');
-        btn.innerText = 'copy';
-        if (container.children) {
-            container.replaceChildren(caja)
-        }
-        container.appendChild(caja);
-        container.appendChild(btn);
-        btn.onclick = () => copiar(caja);
+function remplazarElemento(container, elemento ) {
+    if (container.children) {
+        container.replaceChildren(elemento);
+    }
+    return container
 }
 
+
+
+function mostrarContenido(texto) {
+
+    const container = document.querySelector('.container');
+
+    const cajaDeTexto = document.createElement('div');
+    cajaDeTexto.innerHTML = texto;
+
+    let btn = document.createElement('button');
+    btn.innerText = 'copy';
+    
+    remplazarElemento(container, cajaDeTexto)
+
+    container.appendChild(cajaDeTexto)
+    container.appendChild(btn)
+
+    btn.onclick = () => copiar(cajaDeTexto)
+
+    return cajaDeTexto;
+}
  
+
 
 function encriptar() {
     
     var textoSinEncriptar = document.querySelector('textarea').value
 
 
-    if (textoSinEncriptar != '' && detectarCaracterInvalido(textoSinEncriptar)) {
+    if (textoSinEncriptar != '' && !detectarCaracterInvalido(textoSinEncriptar)) {
     
-        var result = textoSinEncriptar.replaceAll('e', 'enter')
+        var textoEncriptado = textoSinEncriptar.replaceAll('e', 'enter')
         .replaceAll('i', 'imes')
         .replaceAll('a', 'ai')
         .replaceAll('o', 'ober')
         .replaceAll('u', 'ufat')
     
-        mostrarContenido(result);
+        mostrarContenido(textoEncriptado);
     } else {
-        if (textoSinEncriptar === '') alert('ingrese un mensaje');
-        alert('Caracter invalido: no son validas mayuscaules y/o caracteres especiales')
+        if (textoSinEncriptar === '') return alert('ingrese un mensaje');
+        alert('Carácter invalido: no son validas letras mayúsculas y/o carácteres especiales')
     }
 
     document.querySelector('textarea').value = '';
@@ -63,15 +77,17 @@ function encriptar() {
 }
 
 function desencriptar() {
+
     var textoEncriptado = document.querySelector('textarea').value
     
-    var cambio = textoEncriptado.replaceAll('ai', 'a')
+    var textoDesencriptado = textoEncriptado.replaceAll('ai', 'a')
         .replaceAll('enter', 'e')
         .replaceAll('imes', 'i')
         .replaceAll('ober', 'o')
         .replaceAll('ufat', 'u')
     
-    mostrarContenido(cambio);
+    mostrarContenido(textoDesencriptado);
+
     document.querySelector('textarea').value = '';
 }
     
