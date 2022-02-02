@@ -44,36 +44,18 @@ function mostrarContenido(parametro) {
 
  
 
-function encriptar(e) {
+function encriptar() {
     
     var textoSinEncriptar = document.querySelector('textarea').value
 
 
     if (textoSinEncriptar != '') {
-        let arreglo = [];
-
-    for (let i = 0; i < textoSinEncriptar.length; i++) arreglo.push(textoSinEncriptar[i])
-
-
-        for (let i = 0; i < arreglo.length; i++) {
-            if (arreglo[i] === 'a') {
-                arreglo[i] = 'ai'
-            }
-            if (arreglo[i] === 'e') {
-                arreglo[i] = 'enter'
-            }
-            if (arreglo[i] === 'i') {
-                arreglo[i] = 'imes'
-            }
-            if (arreglo[i] === 'u') {
-                arreglo[i] = 'ufat'
-            }
-            if (arreglo[i] === 'o') {
-                arreglo[i] = 'ober'
-            }
-        }
     
-        var result = arreglo.join('')
+        var result = textoSinEncriptar.replaceAll('e', 'enter')
+        .replaceAll('i', 'imes')
+        .replaceAll('a', 'ai')
+        .replaceAll('o', 'ober')
+        .replaceAll('u', 'ufat')
     
         mostrarContenido(result);
     } else {
