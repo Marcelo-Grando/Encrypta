@@ -5,7 +5,7 @@
 ### Vista en la Web
 
 <p align="left">
-  <img width=800 src="Encrypt.png" />
+  <img width=800 src="./images/Encrypt.png" />
 </p>
 
 ## Acerca del proyecto
