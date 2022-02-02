@@ -8,13 +8,13 @@ function isLowerCase(str) {
     return str == str.toLowerCase() && str != str.toUpperCase();
 }
 
-function detectar(parametro) {
-    for (let i = 0; i < parametro.length; i++) {
-        if (parametro[i] === ' ' || isLowerCase(parametro) === true) {
-            return true;
+function detectarCaracterInvalido(texto) {
+    for (let i = 0; i < texto.length; i++) {
+        if (texto[i] === ' ' && isLowerCase(texto[i]) === false) {
+            return false;
         }
     }
-    return false; 
+    return true; 
 }
 
 function copiar(texto) {
@@ -24,7 +24,6 @@ function copiar(texto) {
 
 function mostrarContenido(parametro) {
     
-    if (detectar(parametro)) {
         const container = document.querySelector('.container');
         let caja = document.createElement('div');
         caja.innerHTML = parametro;
@@ -36,10 +35,6 @@ function mostrarContenido(parametro) {
         container.appendChild(caja);
         container.appendChild(btn);
         btn.onclick = () => copiar(caja);
-    } else {
-        alert('Caracter invalido: el texto no puede contener mayusculas o caracteres especiales');
-    }
-    
 }
 
  
@@ -49,7 +44,7 @@ function encriptar() {
     var textoSinEncriptar = document.querySelector('textarea').value
 
 
-    if (textoSinEncriptar != '') {
+    if (textoSinEncriptar != '' && detectarCaracterInvalido(textoSinEncriptar)) {
     
         var result = textoSinEncriptar.replaceAll('e', 'enter')
         .replaceAll('i', 'imes')
@@ -59,7 +54,8 @@ function encriptar() {
     
         mostrarContenido(result);
     } else {
-        alert('ingrese un mensaje');
+        if (textoSinEncriptar === '') alert('ingrese un mensaje');
+        alert('Caracter invalido: no son validas mayuscaules y/o caracteres especiales')
     }
 
     document.querySelector('textarea').value = '';
