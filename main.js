@@ -58,7 +58,7 @@ function encriptar() {
     var textoSinEncriptar = document.querySelector('textarea').value
 
 
-    if (textoSinEncriptar != '' && !detectarCaracterInvalido(textoSinEncriptar)) {
+    if (textoSinEncriptar != '' && detectarCaracterInvalido(textoSinEncriptar)) {
     
         var textoEncriptado = textoSinEncriptar.replaceAll('e', 'enter')
         .replaceAll('i', 'imes')

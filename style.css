@@ -46,8 +46,7 @@ textarea {
 
 .buttons button:hover {
     background: honeydew;
-    width: 162px;
-    height: 32px;
+    cursor: pointer;
 }
 
 
